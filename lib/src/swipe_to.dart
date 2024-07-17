@@ -31,9 +31,13 @@ class SwipeTo extends StatefulWidget {
   /// if not specified default size 26 will be taken
   final double iconSize;
 
-  /// color value defining color of displayed icon beneath child widget
+  /// color value defining color of displayed icon on the left beneath child widget
   ///if not specified primaryColor from theme will be taken
-  final Color? iconColor;
+  final Color? iconLeftColor;
+
+  /// color value defining color of icon displayed on the rigth beneath child widget
+  ///if not specified primaryColor from theme will be taken
+  final Color? iconRightColor;
 
   /// Double value till which position child widget will get animate when swipe left
   /// or swipe right
@@ -66,7 +70,8 @@ class SwipeTo extends StatefulWidget {
     this.iconOnLeftSwipe = Icons.reply,
     this.leftSwipeWidget,
     this.iconSize = 26.0,
-    this.iconColor,
+    this.iconLeftColor,
+    this.iconRightColor,
     this.animationDuration = const Duration(milliseconds: 150),
     this.offsetDx = 0.3,
     this.swipeSensitivity = 5,
@@ -189,8 +194,8 @@ class _SwipeToState extends State<SwipeTo> with SingleTickerProviderStateMixin {
                     Icon(
                       widget.iconOnRightSwipe,
                       size: widget.iconSize,
-                      color:
-                          widget.iconColor ?? Theme.of(context).iconTheme.color,
+                      color: widget.iconRightColor ??
+                          Theme.of(context).iconTheme.color,
                     ),
               ),
               AnimatedOpacity(
@@ -201,8 +206,8 @@ class _SwipeToState extends State<SwipeTo> with SingleTickerProviderStateMixin {
                     Icon(
                       widget.iconOnLeftSwipe,
                       size: widget.iconSize,
-                      color:
-                          widget.iconColor ?? Theme.of(context).iconTheme.color,
+                      color: widget.iconLeftColor ??
+                          Theme.of(context).iconTheme.color,
                     ),
               ),
             ],
